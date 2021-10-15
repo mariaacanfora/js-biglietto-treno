@@ -7,19 +7,17 @@ eta = parseInt(eta);
 km = parseInt(km);
 
 const costKm = 0.21;
-let costoTot = km * costKm;
+let discount = 1;
 
-
-let msgAlertPrice = `Il prezzo del biglietto per il costo del tuo viaggio di ${km} km è pari a: ${costoTot.toFixed(2)}€`;
+let msgAlertPrice = "";
 
 if (isNaN(eta) || isNaN(km)){
     alert(msgAlert);
 } else if (eta < 18) {
-    costoTot = costoTot * .8;
-    alert(msgAlertPrice);
+    discount = .8;
 } else if (eta >= 65) {
-    costoTot = costoTot * .6
-    alert(msgAlertPrice);
-} else {
-    alert(msgAlertPrice);
+    discount = 0.6;
 }
+
+let costoTot = km * costKm * discount;
+alert(`Il prezzo del biglietto per il costo del tuo viaggio di ${km} km è pari a: ${costoTot.toFixed(2)}€`);
